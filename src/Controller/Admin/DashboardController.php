@@ -40,18 +40,16 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('App');
+            ->setTitle('App')
+            ->setTranslationDomain('admin');
     }
 
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToCrud('Product', 'fa fa-tags', Product::class),
-            MenuItem::linkToCrud('Ingredient', 'fa fa-file-text', Ingredient::class),
-            MenuItem::linkToCrud('IngredientList', 'fa fa-user', IngredientList::class),
-            MenuItem::linkToCrud('InstructionList', 'fa fa-user', InstructionList::class),
-            MenuItem::linkToCrud('MeasuringUnit', 'fa fa-user', MeasuringUnit::class),
-            MenuItem::linkToCrud('Recipe', 'fa fa-user', Recipe::class)
+            MenuItem::linkToCrud('product.plural', 'fa fa-bowl-food', Product::class),
+            MenuItem::linkToCrud('measuring_unit.plural', 'fa fa-weight-hanging', MeasuringUnit::class),
+            MenuItem::linkToCrud('recipe.plural', 'fa fa-book', Recipe::class)
         ];
     }
 }
