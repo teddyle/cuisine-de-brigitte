@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\MeasuringUnit;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -13,6 +14,13 @@ class MeasuringUnitCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return MeasuringUnit::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('measuring_unit')
+            ->setEntityLabelInPlural('measuring_units');
     }
 
     /*
