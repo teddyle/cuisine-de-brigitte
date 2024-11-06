@@ -47,9 +47,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToCrud('product', 'fa fa-bowl-food', Product::class),
+            MenuItem::linkToCrud('product.plural', 'fa fa-bowl-food', Product::class),
             MenuItem::linkToCrud('measuring_unit.plural', 'fa fa-weight-hanging', MeasuringUnit::class),
-            MenuItem::linkToCrud('recipe', 'fa fa-book', Recipe::class)
+            MenuItem::linkToCrud('recipe.plural', 'fa fa-book', Recipe::class)
         ];
     }
 }
