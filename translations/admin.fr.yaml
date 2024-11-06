@@ -1,4 +1,7 @@
-measuring_unit: unité de mesure
-measuring_units: unités de mesure
+measuring_unit:
+  singular: Unité de mesure
+  plural: Unités de mesure
+  create_title: Créer une unité de mesure
+  list_title: Liste des unités de mesure
 product: Produit
 recipe: Recette
