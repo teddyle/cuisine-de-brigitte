@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -23,6 +24,13 @@ class Product
      */
     #[ORM\OneToMany(targetEntity: Ingredient::class, mappedBy: 'product')]
     private Collection $ingredients;
+
+    #[Vich\UploadableField(mapping: 'productThumbnails', fileNameProperty: 'thumbnailName')]
+    private ?File $thumbnailFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $thumbnailName = null;
+
 
     public function __construct()
     {
@@ -45,6 +53,24 @@ class Product
 
         return $this;
     }
+
+    public function getThumbnailName(): ?string
+    {
+        return $this->thumbnailName;
+    }
+
+    public function setThumbnailName(string $thumbnailName): static
+    {
+        $this->thumbnailName = $thumbnailName;
+
+        return $this;
+    }
+
+    public function updateThumbnail(?File $thumbnailFile = null): void
+    {
+        $this->thumbnailFile = $thumbnailFile;
+    }
+
 
     /**
      * @return Collection<int, Ingredient>
